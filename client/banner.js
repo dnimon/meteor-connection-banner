@@ -70,6 +70,14 @@ Meteor.startup(function(){
 						var retryIn = Math.round((Meteor.status().retryTime - (new Date()).getTime())/1000);
 						if(isNaN(retryIn))
 							retryIn = 0;
+
+						if(retryIn < 0) {
+							retryIn = 0;
+							console.log("found negative retry");
+							Meteor.disconnect();
+							Meteor.reconnect();
+						}
+						
 						Session.set('MeteorConnection-retryTimeSeconds', retryIn);
 						Session.set('MeteorConnection-failedReason', Meteor.status().reason);
 					},500);
@@ -78,4 +86,3 @@ Meteor.startup(function(){
 		Session.set('MeteorConnection-isConnected', isConnected);
 	});
 });
-	
