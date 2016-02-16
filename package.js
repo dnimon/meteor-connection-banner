@@ -1,7 +1,7 @@
 Package.describe({
     summary: "A banner that displays when meteor server is disconnected with countdown and reconnect option",
     name: "dnimon:connection-banner",
-    version: "0.4.4",
+    version: "0.4.6",
     git: "https://github.com/dnimon/meteor-connection-banner.git"
 });
 
